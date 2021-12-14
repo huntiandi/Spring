@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="emp" class="com.yang.ioc_xml.bean.Emp">
+        <property name="userName" value="当当"></property>
+        <property name="gender" value="男"></property>
+        <!--设置内部bean-->
+        <property name="dept">
+            <bean id="dept" class="com.yang.ioc_xml.bean.Dept">
+                <property name="name" value="安保"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!--集合类型的注入-->
+    <bean id="student" class="com.yang.ioc_xml.collection.Student" scope="prototype">
+        <property name="courses">
+            <!--数组注入-->
+            <array>
+                <value>java</value>
+                <value>c++</value>
+            </array>
+        </property>
+       <!-- <property name="list" >
+            &lt;!&ndash;list注入&ndash;&gt;
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+            </list>
+        </property>-->
+        <!--使用公共的list-->
+        <property name="list" ref="Stulist"></property>
+        <property name="empList">
+            <!--list对象类型的注入-->
+            <list>
+                <ref bean="emp"></ref>
+            </list>
+        </property>
+        <property name="map">
+            <!--map注入-->
+            <map>
+                <entry key="Java" value="学习"></entry>
+                <entry key="算法" value="努力"></entry>
+            </map>
+        </property>
+        <property name="set">
+            <!--set注入-->
+            <set>
+                <value>402</value>
+                <value>401</value>
+                <value>403</value>
+            </set>
+        </property>
+    </bean>
+    <!--提取集合类型属性注入-->
+    <util:list id="Stulist">
+        <value>北京</value>
+        <value>上海</value>
+        <value>广州</value>
+    </util:list>
+</beans>

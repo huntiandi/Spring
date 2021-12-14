@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+            <!--开启扫描
+            component-scan开启扫描
+            base-package 扫描目录
+            -->
+        <context:component-scan base-package="com.yang.ioc_ann,com.yang.aop.ann"></context:component-scan>
+    <!--开启aspect生成代理对象-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <!--
+    use-default-filters 默认是true使用默认的filter；改为false使用自己配置的
+    expression表示只扫描Service;   context:exclude-filter表示不扫描哪些
+    type中的annotation表示注解，和工程名无关
+    -->
+    <!--<context:component-scan base-package="com.yang" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+    <context:component-scan base-package="com.yang" >
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>-->
+</beans>
