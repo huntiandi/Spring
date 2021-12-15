@@ -54,3 +54,10 @@
 * heards属性：必须全部符合才能调用，通过请求头信息匹配--------》404
 * springMVC支持Ant风格，所以value里面可以使用?,*,**
   * 使用两个*时，要使用/**/xxx风格
+* ==springMVC支持路径占位符==
+  * 在传参数时使用rest方式：/deleteUser/1等同于原始的：/deleteUser?id=1
+  * 路径中的占位符常用于restful风格，通过==@PathVariable==注解，将占位符表示的数据赋值给控制器方法的参数
+
+##### SpringMVC获取请求参数
+
+* 使用servletAPI获取：前端控制器会把request传入，所以可以直接使用HttpServletRequest中
