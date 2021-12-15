@@ -61,3 +61,5 @@
 ##### SpringMVC获取请求参数
 
 * 使用servletAPI获取：前端控制器会把request传入，所以可以直接使用HttpServletRequest中
+* 通过控制器形参获取参数
+  * 
