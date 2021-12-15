@@ -38,5 +38,19 @@
 
   ---
 
-  
 
+##### @RequestMapping注解
+
+* 作用：将请求和处理请求的控制器方法关联起来，建立映射关系
+* 位置：类，方法；在类上是请求路径的初始信息，方法上是请求路径的具体信息
+* ==value属性==：可以是个数组，只要满足数组中任一值，即可访问---------》404
+* ==method属性==：通过请求方式匹配->get或者post通过RequestMethod去点，可以是多个值----》405
+* 派生的注解，请求方式必须是对应的请求方法
+  * @GetMapping        浏览器直接提交是get
+  * @PostMapping      form表单可以设置为post
+  * PutMapping            需要使用spring提供的过滤器HiddenHttpMethodFilter
+  * DeleteMapping
+* params属性：必须全部符合才能调用，通过请求参数匹配----------》400
+* heards属性：必须全部符合才能调用，通过请求头信息匹配--------》404
+* springMVC支持Ant风格，所以value里面可以使用?,*,**
+  * 使用两个*时，要使用/**/xxx风格
