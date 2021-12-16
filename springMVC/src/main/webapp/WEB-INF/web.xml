@@ -4,6 +4,26 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <!--监听器-》过滤器-》servlet-->
+  <!--添加过滤器，解决获取参数乱码问题-->
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <!--设置请求编码utf-8编码-->
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <!--设置响应编码为utf-8-->
+    <init-param>
+      <param-name>ForceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <!--配置springMVC前段控制器，对浏览器请求统一处理-->
   <servlet>
     <servlet-name>SpringMVC</servlet-name>

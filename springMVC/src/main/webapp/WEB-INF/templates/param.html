@@ -6,6 +6,20 @@
 </head>
 <body>
 <h1>测试请求参数</h1><br/>
-<a th:href="@{/param(username='admin',password=123)}">获取请求参数</a><br/>
+<form th:action="@{/param}">
+    <input type="text" name="username" value="admin"><br/>
+    <input type="text" name="password" value="123"><br/>
+    <input type="checkbox" name="hobby" value="java">java
+    <input type="checkbox" name="hobby" value="c++">c++
+    <input type="checkbox" name="hobby" value="php">php<br/>
+    <input type="submit" value="提交爱好">
+</form><br/>
+<form th:action="@{/bean}" method="post">
+    姓名<input type="text" name="name" /><br/>
+    性别<input type="text" name="sex" /><br/>
+    爱好<input type="text" name="hobby" /><br/>
+    住址<input type="text" name="address" /><br/>
+    <input type="submit" value="测试bean接受参数">
+</form><br/>
 </body>
 </html>
