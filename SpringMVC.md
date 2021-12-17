@@ -73,4 +73,9 @@
 * 获取cookie信息
   * @CookieValue：将cookie和控制器方法的形参创建映射关系，同样拥有上面两个属性
 * 通过JavaBean获取参数
-  * 
+  * 在控制器方法中直接拿bean接受即可，但是前台的参数名要和bean的属性名一致
+  * 解决post响应编码，在web.xml中配置spring的过滤器，CharacterEncodingFilter
+
+##### 域对象共享数据
+
+* 
