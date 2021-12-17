@@ -58,6 +58,8 @@
   * 在传参数时使用rest方式：/deleteUser/1等同于原始的：/deleteUser?id=1
   * 路径中的占位符常用于restful风格，通过==@PathVariable==注解，将占位符表示的数据赋值给控制器方法的参数
 
+---
+
 ##### SpringMVC获取请求参数
 
 * 使用servletAPI获取：前端控制器会把request传入，所以可以直接使用HttpServletRequest中
@@ -76,6 +78,52 @@
   * 在控制器方法中直接拿bean接受即可，但是前台的参数名要和bean的属性名一致
   * 解决post响应编码，在web.xml中配置spring的过滤器，CharacterEncodingFilter
 
+---
+
 ##### 域对象共享数据
 
-* 
+###### 五种方式向request域共享对象
+
+五种方式底层都是使用ModelAndView
+
+* Servlet共享，在控制器方法中加入HttpServletRequest对象；不建议
+* 使用==ModelAndView==向request域对象共享数据
+  * 返回值必须是ModelAndView，设置数据使用addObject，设置视图使用setViewName
+* 使用Model向request域对象共享
+  * 在控制器方法传入model对象，使用model.addAttribute方法，返回的是string
+* 使用map向request域对象共享
+  * 在控制器方法传入map对象，使用map.put存放数据，返回还是String
+* 使用ModelMap向request域对象共享
+  * 在控制器传入ModelMap对象，使用put或者addAttribute，放回是string
+
+###### 几种方式的关系
+
+* Model，Map，ModelMap的关系-------》本质上都是BindingAwareModelMap
+  * Model是一个接口，ModelMap继承了linkedHashMap，ExtendedModelMap继承了ModelMap实现了Model，而BindingAwareModelMap继承了ExtendedModelMap
+
+###### 向session域共享数据
+
+* 建议使用HttpSession共享，方便
+
+###### 向application域共享数据
+
+* 先获取ServletContext，例如session.getServletContext()，在插入数据
+
+---
+
+##### SpringMVC的视图
+
+###### 基本概念
+
+* SpringMVC的视图是view接口，视图的作用是渲染数据，将模型Model的数据展示给用户
+* 默认有两种一种是转发视图一种是重定向视图，还有jstl视图以及ThymeleafView
+
+###### 1.转发视图
+
+* 需要添加forward:
+
+###### 2.重定向视图
+
+###### 3.Thymeleaf视图
+
+* 当没有任何前缀时，会被视图解析器解析，配置的是什么就是什么，我们配置的是Thymeleaf所以，解析后加上前后缀就变成了ThymeleafView，转发到对应的路径

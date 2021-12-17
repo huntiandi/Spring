@@ -22,4 +22,9 @@ public class HelloController {
     public String index2(){
         return "index2";
     }
+
+    @RequestMapping("/testView")
+    public String testView(){
+        return "view";
+    }
 }
