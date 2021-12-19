@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>restFul</title>
+</head>
+<body>
+<a th:href="@{/user}">rest查询所有用户</a><br/>
+<a th:href="@{/user/1}">rest根据id查询用户</a><br/>
+<hr/>
+<form th:action="@{/user}" method="post">
+    用户名<input type="text" name="username" /><br/>
+    密码<input type="text" name="password" /><br/>
+    <input type="submit" value="添加用户" /><br/>
+</form><hr/>
+<form th:action="@{/user}" method="post">
+    <input type="hidden" name="_method" value="put">
+    用户名<input type="text" name="username" /><br/>
+    密码<input type="text" name="password" /><br/>
+    <input type="submit" value="修改用户" /><br/>
+</form><hr/>
+<a th:href="@{/user}">rest删除一个用户</a><br/>
+</body>
+</html>

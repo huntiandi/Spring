@@ -33,6 +33,7 @@
     </bean>
     <!--视图控制器，当视图只配置一个跳转页面的时候可以用 path路径，view-name映射路径-->
     <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
+    <mvc:view-controller path="/rest" view-name="rest"></mvc:view-controller>
     <!--开启mvc注解驱动-->
     <mvc:annotation-driven></mvc:annotation-driven>
 </beans>
