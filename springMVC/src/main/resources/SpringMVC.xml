@@ -2,8 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!--开启扫描
     component-scan开启扫描
     base-package 扫描目录
@@ -29,4 +31,8 @@
         </bean>
     </property>
     </bean>
+    <!--视图控制器，当视图只配置一个跳转页面的时候可以用 path路径，view-name映射路径-->
+    <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
+    <!--开启mvc注解驱动-->
+    <mvc:annotation-driven></mvc:annotation-driven>
 </beans>

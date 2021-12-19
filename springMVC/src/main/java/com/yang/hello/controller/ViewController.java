@@ -18,9 +18,16 @@ public class ViewController {
         return "success";
     }
 
+    //测试转发视图
     @RequestMapping("/testForward")
     public String testForward(){
         //会去掉forward来进行转发
         return "forward:/testViewThymeleaf";
+    }
+
+    //测试重定向视图
+    @RequestMapping("/testRedirect")
+    public String testRedirect(){
+        return "redirect:/testForward";
     }
 }

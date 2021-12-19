@@ -7,9 +7,9 @@
 <body>
 <h1>首页</h1>
 <a th:href="@{/index2}">访问目标页面index2.html</a><br/>
-<a th:href="@{/hello/success}">success页面</a><br/>
-<a th:href="@{/hello/test}">测试value数组</a><br/>
-<form th:action="@{/hello/test}" method="post">
+<a th:href="@{/hello/success(username=admin)}">success页面</a><br/>
+<a th:href="@{/hello/test(username=admin)}">测试value数组</a><br/>
+<form th:action="@{/hello/test(username=admin)}" method="post">
     <input type="submit" name="提交">
 </form>
 <a th:href="@{/hello/testRest/1}">测试Rest占位符</a><br/>

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("hello")
 public class RequestMappingController {
-    @RequestMapping(value = {"/success","/test"},method = {RequestMethod.POST},params = {"username=admin"})
+    @RequestMapping(value = {"/success","/test"},method = {RequestMethod.POST,RequestMethod.GET},params = {"username=admin"})
     public String success(){
         return "success";
     }

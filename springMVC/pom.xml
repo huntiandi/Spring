@@ -44,7 +44,7 @@
       <artifactId>logback-classic</artifactId>
       <version>1.2.3</version>
     </dependency>
-    <!--spring5与hymeleaf整合-->
+    <!--spring5与thymeleaf整合-->
     <dependency>
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf-spring5</artifactId>
