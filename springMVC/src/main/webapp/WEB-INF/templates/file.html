@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>头像</title>
+</head>
+<body>
+<a th:href="@{/fileDownLoad}">下载图片</a><br/>
+<!--文件上传必须是form表单的post方式，并且要设置enctype，就会按照二进制上传文件否则是name=value形式-->
+<form th:action="@{/testUp}" method="post" enctype="multipart/form-data">
+    头像<input type="file" name="photo" ><br/>
+    <input type="submit" value="上传头像"><br/>
+</form>
+</body>
+</html>

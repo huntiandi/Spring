@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Http</title>
+</head>
+<body>
+<form method="post" th:action="@{/httpRequest}">
+    用户名<input name="username" type="text"/><br/>
+    密码<input name="password" type="text"/><br/>
+    <input type="submit" value="测试RequestBody"/><br/>
+</form>
+<hr/>
+<form method="post" th:action="@{/httpReqEntity}">
+    用户名<input name="username" type="text"/><br/>
+    密码<input name="password" type="text"/><br/>
+    <input type="submit" value="测试RequestEntity"/><br/>
+</form>
+<hr/>
+<a th:href="@{/testResponse}">测试Response注解</a><br/>
+<a th:href="@{/testResponseUser}">测试Response返回对象</a><br/>
+</body>
+</html>

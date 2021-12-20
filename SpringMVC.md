@@ -167,3 +167,30 @@ view
 
 ##### HttpMessageConverter
 
+###### 基本概念
+
+* HttpMessageConverter是报文信息转换器，即将请求报文转换为Java对象；将Java对象转换为响应报文的过程
+* 在此过程中提供了两个注解两个类：@RequestBody，@ResponseBody，RequestEntity，ResponseEntity
+
+###### 1.@RequestBody
+
+* 可以获取请求体，在控制器方法参数中使用该注解标注，改形参就会被请求体赋值
+
+###### 2.RequestEntity
+
+* 是封装请求报文的一种类型，在控制器方法参数中设置该类型的形参，即可获取请求头，请求体等信息
+
+###### 3.@ResponseBody
+
+* 用于标识一个控制器方法，可以将该方法的返回值作为响应报文的响应体直接响应到浏览器
+* 返回对象时：1.需要引入gson；2.配置mvc驱动；3.使用@ResponseBody注解；4.将对象直接作为控制器方法返回值返回；就可以将对象自动转换成成JSON格式的字符串返回
+
+###### 4.@RestController
+
+* 相当于@Controller加@ResponseBody，即给控制器中的每一个方法都添加了@ResponseBody注解
+
+###### 5.ResponseEntity
+
+* 用于控制器方法的返回值类型，该控制器方法的返回值就是响应到浏览器的响应报文
+* 实现文件下载功能
+
