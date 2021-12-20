@@ -40,4 +40,11 @@ public class UserController {
         System.out.println("修改用户用户名:"+username+"密码:"+password);
         return "success";
     }
+
+    //删除用户
+    @DeleteMapping("/user/{id}")
+    public String deleteUser(@PathVariable("id")Integer id){
+        System.out.println("删除用户编号为"+id+"的用户");
+        return "success";
+    }
 }

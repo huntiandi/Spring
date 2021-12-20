@@ -19,6 +19,10 @@
     密码<input type="text" name="password" /><br/>
     <input type="submit" value="修改用户" /><br/>
 </form><hr/>
-<a th:href="@{/user}">rest删除一个用户</a><br/>
+<!--thymeleaf中取可变参数要用这样@{'/user'+@{2}}-->
+<form th:action="@{/user/2}" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="删除用户" /><br/>
+</form><hr/>
 </body>
 </html>

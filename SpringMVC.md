@@ -164,3 +164,6 @@ view
 * PUT和DELETE请求需要HiddenHttpMethodFilter过滤器
   * 整个过滤器要求提交方式必须是post并且，传入一个hidden标签，name是"_method"值是真正的请求方式；之后整个过滤器会把请求方式由post替换成相应的请求方式
   * 在配置过滤器时，要注意，设置编码的过滤器要放在第一个位置，否则因为HiddenHttpMethodFilter这个过滤器获取过参数了，编码过滤器就会失效。
+
+##### HttpMessageConverter
+

@@ -34,10 +34,15 @@
     <!--视图控制器，当视图只配置一个跳转页面的时候可以用 path路径，view-name映射路径-->
     <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
     <mvc:view-controller path="/rest" view-name="rest"/>
-    <!--开启mvc注解驱动-->
+    <!--开启mvc注解驱动
+    如果不加这个驱动所有的都会交给默认的请求去处理了，只能访问静态资源，而其他跳转功能等无法使用
+    所以default-servlet-handler标签要和annotation-driven一起使用
+    -->
     <mvc:annotation-driven/>
     <!--开启对静态资源的访问
-    先由mvc处理如果找不到就由默认的servlet处理
+    由于设置了DispatcherServlet所以所有的请求都会交给DispatcherServlet去处理，而当它处理不了的时候，就需要交给默认的servlet处理
+    web阶段是由于Tomcat中设置为默认servlet，而mvc中设置为DispatcherServlet，起冲突时，就地原则，就使用DispatcherServlet，所以需要
+    在开启该标签，当DispatcherServlet处理不了时，交给默认的去处理，若也处理不了就404了
     -->
     <mvc:default-servlet-handler/>
 </beans>
