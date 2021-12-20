@@ -103,6 +103,7 @@ model
 
 * Model，Map，ModelMap的关系-------》本质上都是BindingAwareModelMap
   * Model是一个接口，ModelMap继承了linkedHashMap，ExtendedModelMap继承了ModelMap实现了Model，而BindingAwareModelMap继承了ExtendedModelMap
+  * ModelAndView返回值必须是ModelAndView其他的返回String即可
 
 ###### 向session域共享数据
 
@@ -193,4 +194,19 @@ view
 
 * 用于控制器方法的返回值类型，该控制器方法的返回值就是响应到浏览器的响应报文
 * 实现文件下载功能
+
+###### 6.文件上传与下载
+
+* 下载功能要使用ResponseEntity类
+* 上传功能要使用文件上传解析器，文件上传解析类 id必须是multipartResolver，否则会报错；
+  * 上传功能控制器方法使用MultipartFile类接收文件
+  * 使用UUID这个32位随机数，来命名文件名，防止重名问题
+
+---
+
+##### 拦截器
+
+###### 基本概念
+
+* 
 

@@ -47,6 +47,6 @@
     在开启该标签，当DispatcherServlet处理不了时，交给默认的去处理，若也处理不了就404了
     -->
     <mvc:default-servlet-handler/>
-    <!--文件上传解析类-->
-<!--    <bean id= "multipartFile" class="org.springframework.web.multipart.commons.CommonsMultipartFile"></bean>-->
+    <!--文件上传解析类 id必须是multipartResolver-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 </beans>

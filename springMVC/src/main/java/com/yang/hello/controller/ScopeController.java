@@ -37,7 +37,7 @@ public class ScopeController {
         return mav;
     }
 
-    //使用MOdel共享
+    //使用Model共享
     @RequestMapping("/scopeModel")
     public String testModel(Model model){
         model.addAttribute("test","model共享域对象");
