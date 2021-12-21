@@ -247,3 +247,19 @@ view
 
 ##### 基于注解的SpringMVC
 
+并不好用，详见WebInit
+
+---
+
+##### SpringMVC执行流程
+
+###### 1.常用组件
+
+* DispatcherServlet：前段控制器，用来统一处理请求与响应
+* HandlerMapping：处理器映射，用来寻找url,method等信息调用的controller；实现路径和控制器方法的映射
+* Handler：处理器，其实就是我们的controller，要自己写
+* HandlerAdapter：处理器适配器，就是执行Handler的
+* ViewResolve：视图解析器，进行视图解析，得到相应的视图
+* View：视图，将数据通过页面渲染给用户
+
+2.
