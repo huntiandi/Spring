@@ -49,4 +49,26 @@
     <mvc:default-servlet-handler/>
     <!--文件上传解析类 id必须是multipartResolver-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+    <!--配置拦截器-->
+    <mvc:interceptors>
+<!--        <bean class="com.yang.interceptors.FirstInterceptor"/>-->
+<!--        <ref bean="firstInterceptor"/>-->
+        <!--上面两个都是对所有的请求拦截，效果一样，下面这个可以设置拦截地址 /*只能拦截一层;/**能拦截所有-->
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <mvc:exclude-mapping path="/"/>
+            <ref bean="firstInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!--配置异常处理-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!--当出现算法错误时，跳转error页面-->
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.ArithmeticException">error</prop>
+            </props>
+        </property>
+        <!--设置错误信息共享在请求域中的键-->
+        <property name="exceptionAttribute" value="ex"></property>
+    </bean>
 </beans>

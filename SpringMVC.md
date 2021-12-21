@@ -208,5 +208,42 @@ view
 
 ###### 基本概念
 
-* 
+* 拦截器的执行位于dispatcherServlet与controller之间；用于拦截控制器方法的执行；而过滤器位于dispatcherServlet之前；
+* 当一次请求发送到服务器时，会先经过过滤器，过滤器放行后去找到dispatcherServlet，ds会去找对应的控制器方法，在这之间会执行拦截器；
+
+###### 拦截器的实现
+
+* 拦截器必须在配置文件中配置，三种配置方式；需要实现HandlerInterceptor接口
+* 拦截器的三个抽象方法
+  * preHandle位于控制器方法之前执行；返回值为TRUE表示放行，返回为FALSE表示拦截
+  * postHandle位于控制器方法之后执行
+  * afterCompletion位于视图渲染之后执行
+
+###### 多个拦截器的执行
+
+* 拦截器顺序和配置文件中的顺序有关
+  * 若返回都是TRUE时preHandle按顺序执行，其他两个按倒叙执行
+  * 若返回为FALSE时，返回为FALSE的和他之前的preHandle会执行，POSTHandle都不执行；返回FALSE之前的afterCompletion执行
+
+---
+
+##### 异常处理器
+
+###### 基本概念
+
+* SpringMVC提供了处理控制器方法执行过程中所出现的异常的接口：HandlerExceptionResolver
+
+* HandlerExceptionResolver有两个实现类，一个是默认的DefaultHandlerExceptionResolver一个是自定义的SimpleHandlerExceptionResolver
+
+###### 基于配置的异常处理器
+
+* 在SpringMVC.xml中设置SimpleMappingExceptionResolver这个bean配置参数即可
+
+###### 基于注解的异常处理器
+
+* @ControllerAdvice注解标识控制器，@ExceptionHandler标识方法，value中写错误类即可
+
+---
+
+##### 基于注解的SpringMVC
 

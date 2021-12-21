@@ -27,4 +27,10 @@ public class HelloController {
     public String testView(){
         return "view";
     }
+
+    @RequestMapping("/testError")
+    public String testError(){
+        System.out.println(1/0);
+        return "view";
+    }
 }
