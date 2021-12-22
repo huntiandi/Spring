@@ -90,7 +90,7 @@ public class HttpController {
                 if(!file.exists()){
                     file.mkdir();
                 }
-                // 转存文件
+                // 转存文件separator分割符
                 String path = filePath+File.separator+filename;
                 System.out.println(path);
                 photo.transferTo(new File(path));
