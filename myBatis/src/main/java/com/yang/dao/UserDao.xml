@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!--约束文件-->
+<mapper namespace="UserDao"><!--根标签，namespace必须有值不能为空;参与识别SQL语句;一般使用Dao的全类名-->
+    <!--可以写crud标签;id和dao的方法名保持一致;result返回类型;parameter请求类型-->
+    <select id="selectUserById" resultType="com.yang.bean.User" >
+    select * from User
+  </select>
+</mapper>
