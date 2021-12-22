@@ -30,7 +30,7 @@ public class UserDaoTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         //获取SqlSession 对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        User user = sqlSession.selectOne("UserDao.selectUserById");
+        User user = sqlSession.selectOne("UserDao.selectUserById",2);
         System.out.println(user);
     }
 }
