@@ -171,7 +171,7 @@ view
 ###### 基本概念
 
 * HttpMessageConverter是报文信息转换器，即将请求报文转换为Java对象；将Java对象转换为响应报文的过程
-* 在此过程中提供了两个注解两个类：@RequestBody，@ResponseBody，RequestEntity，ResponseEntity
+* 在此过程中提供了两个注解两个类：@RequestBody，==@ResponseBody==，RequestEntity，ResponseEntity
 
 ###### 1.@RequestBody
 
