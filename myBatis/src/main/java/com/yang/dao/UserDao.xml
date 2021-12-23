@@ -2,11 +2,22 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!--约束文件-->
-<mapper namespace="UserDao"><!--根标签，namespace必须有值不能为空;参与识别SQL语句;一般使用Dao的全类名-->
+<mapper namespace="com.yang.dao.UserDao"><!--根标签，namespace必须有值不能为空;参与识别SQL语句;一般使用Dao的全类名-->
     <!--可以写crud标签;id和dao的方法名保持一致;result返回类型;parameter请求类型
     /*#{}占位符，可以随便写*/
     -->
-    <select id="selectUserById" resultType="com.yang.bean.User" >
+    <select id="selectUserById" resultType="com.yang.bean.User" parameterType="int">
     select * from User where id = #{idsss}
   </select>
+    <select id="selectUserByIdOrName" resultType="com.yang.bean.User" >
+    select * from User where id = #{id} or username = #{username}
+  </select>
+    <!--查询返回是集合，返回类型仍然是泛型中的那个对象-->
+    <select id="selectUsers" resultType="com.yang.bean.User" >
+    select * from User
+  </select>
+
+    <insert id="insertUser" >
+        insert INTO user (username,password,email) VALUES(#{username},#{password},#{email})
+    </insert>
 </mapper>
