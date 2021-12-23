@@ -2,11 +2,19 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
+<configuration><!--点击查看标签顺序，mybatis是由顺序的-->
     <!--设置日志-->
     <settings>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
+    <!--别名两种方式-->
+    <typeAliases>
+        <!--自定义，优点: 自定义名字 缺点: 需要一个一个定义-->
+        <typeAlias type="com.yang.bean.User" alias="user"/>
+        <!--自定义别名，有点: 直接把一个包中的类都起别名，类名是别名不区分大小写; 缺点: 不能自定义名字,多个包有重复类名会报错-->
+        <package name="com.yang.bean"/>
+    </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
