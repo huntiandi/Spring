@@ -20,4 +20,22 @@
     <insert id="insertUser" >
         insert INTO user (username,password,email) VALUES(#{username},#{password},#{email})
     </insert>
+
+    <!--使用resultMap返回值 id是别名; type是bean的全限定名称-->
+    <resultMap id="userVo" type="com.yang.bean.UserVo">
+        <!--主键要使用id标签 column是列名; property是属性名-->
+        <id column="id" property="idVO"/>
+        <!--非主键列使用result标签; 当Vo的属性名和列名相同时不需要指定-->
+        <result column="username" property="usernameVO"/>
+        <result column="password" property="passwordVO"/>
+        <result column="email" property="emailVO"/>
+    </resultMap>
+    <select id="selectUserVo" resultMap="userVo">
+        select * from User where id = #{id}
+    </select>
+
+    <!--模糊查询-->
+    <select id="selectUserLike" resultMap="userVo">
+        select * from User where username like #{username}
+    </select>
 </mapper>

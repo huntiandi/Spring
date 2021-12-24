@@ -89,4 +89,26 @@
 * 属性：在执行select时使用，表示结果类型，执行SQL后得到Java对象的类型，值有两种：Java类型的全限定名称，和别名
 * mybatis会调用该名称的无参构造器，创建对象，同名的列赋值给同名属性；如果dao返回值是list集合，mybatis会把对象放入list集合
 * 自定义别名：在mybatis配置文件中添加typeAliases标签；但不推荐，最好还是写全限定名
-* 
+* 返回类型也可以是个map，如果是map只能是一行记录否则报错；一般都是使用对象为返回值类型，接受时用对象或list集合；单个的话就用简单类型
+
+###### resultMap
+
+* 结果映射，自定义列名和Java对象属性的对应关系，常用于列名和属性名不同情况下
+
+  ①先定义resultMap标签，指定列名与属性名对应关系
+
+  ②在select标签中使用resultMap属性，指定第一步中第一的resultMap中的id值
+
+  ③可以多次复用，灵活多变
+
+###### 比较
+
+* resultType和resultMap二选一；不能同时使用
+* 当有列名与属性名不同问题时，resultType使用别名解决；resultMap使用标签解决；resultMap更加灵活一些
+
+##### 模糊查询
+
+两种方式：
+
+* 字符串中写好 "%张%"；mapper文件where name like#{}  ---->推荐，灵活
+* 在mapper文件中写好 where name like "%"空格#{}空格"%"；Java传入"张"

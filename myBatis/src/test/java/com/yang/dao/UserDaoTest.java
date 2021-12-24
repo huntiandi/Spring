@@ -1,6 +1,7 @@
 package com.yang.dao;
 
 import com.yang.bean.User;
+import com.yang.bean.UserVo;
 import com.yang.utils.SqlSessionUtils;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -40,11 +41,31 @@ public class UserDaoTest {
         System.out.println(rows);
         sqlSession.close();
     }
+
     @Test
     public void selectUsers() throws IOException {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         List<User> users = sqlSession.selectList("UserDao.selectUsers");
         System.out.println(users);
         sqlSession.close();
+    }
+
+    //requestMap
+    @Test
+    public void selectUserVo() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        UserDao mapper = sqlSession.getMapper(UserDao.class);
+        UserVo userVo = mapper.selectUserVo(2);
+        System.out.println(userVo);
+        sqlSession.close();
+    }
+
+    //模糊查询
+    @Test
+    public void selectUserLike() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        UserDao mapper = sqlSession.getMapper(UserDao.class);
+        List<UserVo> userList = mapper.selectUserLike("%张%");
+        userList.forEach(user -> System.out.println(user));
     }
 }
