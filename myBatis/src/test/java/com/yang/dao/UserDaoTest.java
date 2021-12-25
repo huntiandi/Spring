@@ -1,5 +1,6 @@
 package com.yang.dao;
 
+import com.github.pagehelper.PageHelper;
 import com.yang.bean.User;
 import com.yang.bean.UserVo;
 import com.yang.utils.SqlSessionUtils;
@@ -44,6 +45,8 @@ public class UserDaoTest {
 
     @Test
     public void selectUsers() throws IOException {
+        //使用分页查询
+        PageHelper.startPage(2,2);
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         List<User> users = sqlSession.selectList("com.yang.dao.UserDao.selectUsers");
         System.out.println(users);

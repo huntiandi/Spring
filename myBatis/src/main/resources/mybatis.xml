@@ -17,6 +17,10 @@
         <package name="com.yang.bean"/>
     </typeAliases>
 
+    <!--配置插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
     <!--default必须是某一个environment的id值表示mybatis默认连接数据库-->
     <environments default="development">
         <!--表示一个数据库连接信息-->
