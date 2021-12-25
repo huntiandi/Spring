@@ -113,6 +113,8 @@
 * 字符串中写好 "%张%"；mapper文件where name like#{}  ---->推荐，灵活
 * 在mapper文件中写好 where name like "%"空格#{}空格"%"；Java传入"张"
 
+---
+
 ##### 动态SQL
 
 ###### 基本概念
@@ -146,4 +148,28 @@
 
 * 使用的是sql标签和include标签；sql标签中可以是表名，字段，where条件等；可以在其他地方复用
 * sql标签通过id属性定义唯一标识；在其他位置使用include标签引用某个代码片段
+
+---
+
+##### MyBatis配置文件
+
+###### 基本概念
+
+* 有两大类配置文件：1.mybatis主配置文件；2.mapper文件
+  * mybatis主配置文件，配置全局设置，例如日志，数据源，其他mapper位置等
+  * mapper文件：主要写sql语句；一张表一个mapper文件
+
+###### 主配置文件
+
+* 主配置文件中的标签是由顺序的点击configuration查看顺序
+
+1. properties：引用外部文件
+2. setting：是mybatis的全局设置，影响整个mybatis的运行；一般使用默认值即可
+3. typeAliases：别名的设置
+4. ==environments==：环境标签，可以配置多个environment
+5. ==mappers==：指定其他mapper文件；resource和package
+   * package要求dao和mapper文件在同一目录；并且文件名要一致
+   * ==注意==在使用package时，当把mapper文件放在resources目录下面时，要注意创建包时的方式，可以copy两个文件的真实路径比对一下
+
+---
 

@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration><!--点击查看标签顺序，mybatis是由顺序的-->
+    <!--设置外部文件-->
+    <properties resource="jdbc.properties"/>
     <!--设置日志-->
     <settings>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
@@ -15,21 +17,26 @@
         <package name="com.yang.bean"/>
     </typeAliases>
 
+    <!--default必须是某一个environment的id值表示mybatis默认连接数据库-->
     <environments default="development">
+        <!--表示一个数据库连接信息-->
         <environment id="development">
+            <!--事务管理器类型 type有两种 JDBC表示Connection对象,mybatis自己完成事务管理;MANAGE表示交给容器处理-->
             <transactionManager type="JDBC"/>
-            <!--配置数据源-->
+            <!--配置数据源 type有三种polled连接池技术;unpolled不使用连接池;JNDIJava的命名和目录服务(淘汰了)-->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/jinshouzhi"/>
-                <property name="username" value="root"/>
-                <property name="password" value="yang0729"/>
+                <property name="driver" value="${prop.driverClassName}"/>
+                <property name="url" value="${prop.url}"/>
+                <property name="username" value="${prop.username}"/>
+                <property name="password" value="${prop.password}"/>
             </dataSource>
         </environment>
     </environments>
     <!--指定其他mapper文件的位置-->
     <mappers>
-        <mapper resource="mapper/UserDao.xml"/>
-        <mapper resource="mapper/AccountMapper.xml"/>
+        <!--<mapper resource="mapper/UserDao.xml"/>
+        <mapper resource="mapper/AccountMapper.xml"/>-->
+        <!--使用package时要保证dao和mapper在同一目录,可以在resources下面建一个一模一样的目录使用package-->
+        <package name="com.yang.dao"/>
     </mappers>
 </configuration>
