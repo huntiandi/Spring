@@ -49,7 +49,14 @@
             <include>**/*.properties</include>
             <include>**/*.xml</include>
           </includes>
-          <filtering>false</filtering>
+          <filtering>true</filtering>
+        </resource>
+        <resource>
+          <directory>src/main/resources</directory>    <!--所在的目录-->
+          <includes><!--包括properties和xml都会被扫描-->
+            <include>**/*.properties</include>
+            <include>**/*.xml</include>
+          </includes>
         </resource>
       </resources>
   </build>

@@ -36,7 +36,7 @@ public class UserDaoTest {
     @Test
     public void insertUser() throws IOException {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
-        int rows = sqlSession.insert("UserDao.insertUser", new User("张沃德", "12345", "2131@qq.com"));
+        int rows = sqlSession.insert("com.yang.dao.UserDao.insertUser", new User("张沃德", "12345", "2131@qq.com"));
         sqlSession.commit();
         System.out.println(rows);
         sqlSession.close();
@@ -45,7 +45,7 @@ public class UserDaoTest {
     @Test
     public void selectUsers() throws IOException {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
-        List<User> users = sqlSession.selectList("UserDao.selectUsers");
+        List<User> users = sqlSession.selectList("com.yang.dao.UserDao.selectUsers");
         System.out.println(users);
         sqlSession.close();
     }

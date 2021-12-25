@@ -29,6 +29,7 @@
     </environments>
     <!--指定其他mapper文件的位置-->
     <mappers>
-        <mapper resource="com\yang\dao\UserDao.xml"/>
+        <mapper resource="mapper/UserDao.xml"/>
+        <mapper resource="mapper/AccountMapper.xml"/>
     </mappers>
 </configuration>

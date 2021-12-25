@@ -112,3 +112,38 @@
 
 * 字符串中写好 "%张%"；mapper文件where name like#{}  ---->推荐，灵活
 * 在mapper文件中写好 where name like "%"空格#{}空格"%"；Java传入"张"
+
+##### 动态SQL
+
+###### 基本概念
+
+* 同一个dao的方法，根据不同的条件可以表示不同的sql语句，主要是where部分有变化，使用mybatis提供的标签，实现sql的能力；多用于多条件的查询中
+* 主要有if，where，foreach，sql代码片段；其中使用到><等符号时要使用实体符号，否则会报错
+* 使用动态sql时，dao传入的参数是Java对象
+
+###### 动态sql-if
+
+* 语法：在主sql后面添加if标签 当if标签中的test属性内容为真时会执行if标签中的sql代码段
+* 一般配合where标签使用
+
+###### 动态sql-where
+
+* 使用if标签时，任意引起语法错误，使用where标签解决if产生的语法错误
+* 使用时where标签中一个或多个if标签；当有一个if标签判断条件为true，where标签会转为WHERE关键字附加到sql语句后，如果一个if都不为真，忽略where和里面的if
+* where标签会将紧跟这where的or或and去掉，以保证语法的正确性
+
+###### 动态sql-foreach
+
+* 可以循环数组，list集合，一般用在in语句中；<foreach/>标签
+
+* 遍历查询简单类型集合
+  * collection 是类型list或者array; open和close是开始结束符号; separate是分隔符； item是值
+  * 在<foreach>标签中#{}来接受参数
+* 遍历查询对象类型集合
+  * 在属性item中取到的是一个对象，所以在<foreach>标签中使用#{对象.属性}的形式获取参数
+
+###### 动态sql-代码片段
+
+* 使用的是sql标签和include标签；sql标签中可以是表名，字段，where条件等；可以在其他地方复用
+* sql标签通过id属性定义唯一标识；在其他位置使用include标签引用某个代码片段
+
