@@ -177,6 +177,6 @@
 
 * PageHelper：用来简化分页查询的；会在sql后面加入分页语句
 * 步骤：
-  1. 加入maven依赖
-  2. 在mybatis配置文件加入插件
+  1. 加入maven依赖pagehelper
+  2. 在mybatis配置文件加入插件<plugin interceptor="com.github.pagehelper.PageInterceptor"/>
   3. 在select语句之前调用PageHelper.statPage(页码，每页显示数量)
