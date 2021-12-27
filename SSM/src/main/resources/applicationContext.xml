@@ -8,7 +8,10 @@
                            http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 <!--开启扫描-->
-    <context:component-scan base-package="com.yang"/>
+    <context:component-scan base-package="com.yang">
+        <!--配置哪些注解不扫描 Controller用springMVC-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
     <!--读取外部配置文件-->
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <!--将Druid数据源交给Spring IOC容器来管理-->
@@ -18,12 +21,17 @@
         <property name="url" value="${prop.url}"/>
         <property name="driverClassName" value="${prop.driverClassName}"/>
         <property name="initialSize" value="${prop.initialSize}"/>
+        <property name="maxActive" value="${prop.maxActive}"/>
     </bean>
     <!--SqlSessionFactory 会话工厂交给spring容器管理-->
-    <bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!--注入数据源-->
-        <property name="dataSource" ref="dataSource"/>
-        <!--配置Mapper映射文件的位置-->
-        <property name="mapperLocations" value="classpath:**/mapper/*Mapper.xml"/>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>          <!-- 加载数据环境   -->
+        <!--  绑定mybatis配置文件     -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--   几乎所有的东西都能在这里面配，完全不需要mybatis的核心配置  根据个人喜好，个人感觉分开一点维护比较容易 -->
     </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.yang.mapper"></property>
+    </bean>
+
 </beans>

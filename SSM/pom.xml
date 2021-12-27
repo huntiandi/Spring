@@ -77,6 +77,16 @@
       <artifactId>spring-aspects</artifactId>
       <version>${spring.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
     <!-- mysql jdbc驱动包 -->
     <dependency>
       <groupId>mysql</groupId>
@@ -110,6 +120,23 @@
   </dependencies>
 
   <build>
-
+    <!--资源插件，处理src/main/java目录的xml-->
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>    <!--所在的目录-->
+        <includes><!--包括properties和xml都会被扫描-->
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>    <!--所在的目录-->
+        <includes><!--包括properties和xml都会被扫描-->
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
   </build>
 </project>
