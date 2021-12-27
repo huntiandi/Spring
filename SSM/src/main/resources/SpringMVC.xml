@@ -15,7 +15,7 @@
     <!--配置的视图解析器对象-->
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".jsp"/>
+        <!--<property name="suffix" value=".jsp"/>-->
         <property name="contentType" >
             <value>text/html; charset=UTF-8</value>
         </property>
@@ -27,5 +27,6 @@
     <!--文件上传解析类 id必须是multipartResolver-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
     <!--视图控制器，当视图只配置一个跳转页面的时候可以用 path路径，view-name映射路径-->
-    <mvc:view-controller path="/" view-name="index"/>
+    <mvc:view-controller path="/in" view-name="index.jsp"/>
+    <mvc:view-controller path="/" view-name="in.html"/>
 </beans>
