@@ -1,11 +1,14 @@
 package com.yang.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.yang.bean.User;
 import com.yang.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (User)表控制层
@@ -22,17 +25,19 @@ public class UserController {
     @Resource
     private UserService userService;
 
-   /* *//**
+    /*
      * 分页查询
      *
      * @param user 筛选条件
      * @param pageRequest      分页对象
      * @return 查询结果
-     *//*
+     */
     @GetMapping
-    public ResponseEntity<Page<User>> queryByPage(User user, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.userService.queryByPage(user, pageRequest));
-    }*/
+    public List<User> queryByPage() {
+        //使用分页查询
+        PageHelper.startPage(2,2);
+        return userService.queryByPage();
+    }
 
     /**
      * 通过主键查询单条数据

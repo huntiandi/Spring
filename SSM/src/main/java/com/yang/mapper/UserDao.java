@@ -14,7 +14,6 @@ import java.util.List;
  * @author makejava
  * @since 2021-12-27 14:40:01
  */
-@Repository
 public interface UserDao {
 
     /**
@@ -74,5 +73,6 @@ public interface UserDao {
      */
     int deleteById(Integer id);
 
+    List<User> queryPage();
 }
 

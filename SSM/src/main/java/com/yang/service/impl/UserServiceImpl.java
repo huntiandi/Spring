@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (User)表服务实现类
@@ -20,6 +21,11 @@ import javax.annotation.Resource;
 public class UserServiceImpl implements UserService {
     @Resource
     private UserDao userDao;
+
+    @Override
+    public List<User> queryByPage() {
+        return userDao.queryPage();
+    }
 
     /**
      * 通过ID查询单条数据

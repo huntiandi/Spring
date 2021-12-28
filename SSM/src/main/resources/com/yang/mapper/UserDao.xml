@@ -9,6 +9,12 @@
         <result property="email" column="email" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <!--分页查询-->
+    <select id="queryPage" resultMap="UserMap">
+        select
+          id, username, password, email
+        from user
+    </select>
     <!--查询单个-->
     <select id="queryById" resultMap="UserMap">
         select

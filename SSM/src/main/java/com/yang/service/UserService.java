@@ -3,6 +3,8 @@ package com.yang.service;
 import com.github.pagehelper.Page;
 import com.yang.bean.User;
 
+import java.util.List;
+
 /**
  * (User)表服务接口
  *
@@ -10,6 +12,12 @@ import com.yang.bean.User;
  * @since 2021-12-27 14:39:23
  */
 public interface UserService {
+
+    /**
+     * 分页查询
+     * @return
+     */
+    List<User> queryByPage();
 
     /**
      * 通过ID查询单条数据

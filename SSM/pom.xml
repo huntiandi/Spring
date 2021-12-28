@@ -77,11 +77,13 @@
       <artifactId>spring-aspects</artifactId>
       <version>${spring.version}</version>
     </dependency>
+    <!--事务需要的-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
       <version>${spring.version}</version>
     </dependency>
+    <!--链接数据库要用-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
