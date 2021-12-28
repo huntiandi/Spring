@@ -32,5 +32,5 @@
         <property name="dataSource" ref="dataSource"></property>
     </bean>
     <!--开启事务注解 transaction-manager 指定事务管理器-->
-    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

@@ -4,6 +4,9 @@ import com.yang.bean.User;
 import com.yang.mapper.UserDao;
 import com.yang.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -36,8 +39,10 @@ public class UserServiceImpl implements UserService {
      * @return 实例对象
      */
     @Override
+    @Transactional(rollbackFor=Exception.class)
     public User insert(User user) {
-        this.userDao.insert(user);
+        userDao.insert(user);
+        int i = 12/0;
         return user;
     }
 

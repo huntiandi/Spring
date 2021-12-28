@@ -3,6 +3,7 @@ package com.yang.mapper;
 
 import com.yang.bean.User;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.awt.print.Pageable;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  * @author makejava
  * @since 2021-12-27 14:40:01
  */
+@Repository
 public interface UserDao {
 
     /**
