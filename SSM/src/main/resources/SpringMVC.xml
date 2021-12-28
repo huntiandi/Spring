@@ -13,12 +13,31 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
     <!--配置的视图解析器对象-->
-    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+   <!-- <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
-        <!--<property name="suffix" value=".jsp"/>-->
+        &lt;!&ndash;<property name="suffix" value=".jsp"/>&ndash;&gt;
         <property name="contentType" >
             <value>text/html; charset=UTF-8</value>
         </property>
+    </bean>-->
+    <!-- 配置Thymeleaf视图解析器 -->
+    <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+    <property name="order" value="1"/>
+    <property name="characterEncoding" value="UTF-8"/>
+    <property name="templateEngine">
+        <bean class="org.thymeleaf.spring5.SpringTemplateEngine">
+            <property name="templateResolver">
+                <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+                    <!-- 视图前缀 用来解析文件-->
+                    <property name="prefix" value="/WEB-INF/pages/"/>
+                    <!-- 视图后缀 -->
+                    <property name="suffix" value=".html"/>
+                    <property name="templateMode" value="HTML5"/>
+                    <property name="characterEncoding" value="UTF-8" />
+                </bean>
+            </property>
+        </bean>
+    </property>
     </bean>
     <!--MVC注解驱动-->
     <mvc:annotation-driven/>
@@ -27,6 +46,6 @@
     <!--文件上传解析类 id必须是multipartResolver-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
     <!--视图控制器，当视图只配置一个跳转页面的时候可以用 path路径，view-name映射路径-->
-    <mvc:view-controller path="/in" view-name="index.jsp"/>
-    <mvc:view-controller path="/" view-name="in.html"/>
+<!--    <mvc:view-controller path="/in" view-name="index.jsp"/>-->
+    <mvc:view-controller path="/" view-name="in"/>
 </beans>
