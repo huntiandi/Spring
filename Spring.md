@@ -97,7 +97,7 @@
 
 * 外部配置文件引入    (bean2和jdbc.properties)
 
-  1.创建properties；2.映入context空间，使用<context>标签；3.使用${}获取配置文件的值
+  1.创建properties；2.映入context空间，使用\<context>标签；3.使用${}获取配置文件的值
 
 ###### 基于==注解==的配置文件
 
@@ -109,7 +109,7 @@
 
   * @Controller
 
-  * Repository
+  * @Repository
 
     上述四个注解功能是一样的，都可以创建bean
 
