@@ -124,9 +124,15 @@
 * 实现==属性值的注入==提供的注解---->UserService(ioc_ann)
   * @Autowired  根据属性类型进行自动装配，当类型重复，会把变量名当作bean的id去找
   * @Qualifier     根据属性名称进行 注入(要结合Autowired使用)
-  * @Resource    可以根据类型，也可以根据名称注入(是javax中的，不建议)
+  * @Resource    可以根据类型，也可以根据名称注入(是javax中的，不建议)；两个参数name和type
   * @Value           注入普通类型
 
+* @Autowired和@Resource的区别
+
+  * Autowired是根据类型去找，例如当一个service接口有两个实现类的时候直接(MyService myService)去找就会报错，因为他找到两个不知道该给你哪个；这时可以在@Service注解中添加名称，在调用的时候对象名要写对；或者对象名还是原来的，使用@Qualifier注解将名字写正确
+  * Resource会根据名字去找(例如MyService myServiceImpl)首字母要小写，如果按名字没找到就按类型找，如果没有重复类型就注入了，但是有俩实现类就又报错了；可以使用属性name或者type指定按照某一种去找
+  * 总结：费那么大劲总计就是在service有两个不同的实现类的时候最好是@Service里其俩名字，最后使用@Autowired的时候要么把名字写对要么使用@Qualifier指定名称；使用@Resource的时候把名字写对，或者使用name属性指定名称这样就不会错了
+  
 * 可以使用纯注解来完成属性的注入，spring中还是会用xml去配置 Boot会详解----->SpringConfig
 
   * @Configuration        表示为配置文件
